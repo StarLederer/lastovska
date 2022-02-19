@@ -6,8 +6,7 @@
   "module": "commonjs",
   "engines": {
     "node": ">=12.x.x <=16.x.x",
-    "npm": "8.x.x",
-    "yarn": "1.x"
+    "npm": "8.x.x"
   },
   "scripts": {
     "develop": "strapi develop",
