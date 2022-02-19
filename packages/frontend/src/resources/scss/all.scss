@@ -1,0 +1,14 @@
+$color-bg-abs: #000;
+$color-bg: #080808;
+$color-fg: #fff;
+$color-a: rgb(32, 63, 197);
+
+$trans-s: 150ms;
+
+$max-width: 1000px;
+
+@mixin container {
+  max-width: calc($max-width + 4rem);
+  padding: 0 2rem;
+  margin: 0 auto;
+}
