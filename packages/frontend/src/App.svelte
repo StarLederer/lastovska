@@ -1,20 +1,38 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import backend from "./backend";
+  import { i18n } from "./lib/stores";
+  import Nav from "./lib/Nav.svelte"
+  import Btn from "./lib/buttons/Btn.svelte"
 
-  let text;
-  onMount(async () => {
-    text = (await (await fetch('https://lastovska-backend.herokuapp.com/api/header')).json()).data
-      .attributes;
+  let v_i18n;
+
+  i18n.subscribe((value) => {
+    v_i18n = value;
+    loadStrings();
   });
+
+  let strings;
+  async function loadStrings() {
+    try {
+      strings = (await (await fetch(`${backend}/api/header?locale=${v_i18n.current}`)).json()).data
+      .attributes;
+    }
+    catch (e) {}
+  }
+
+  onMount(loadStrings);
 </script>
 
+<Nav />
+
 <header>
-  {#if text}
-    <h1>{text.title}</h1>
-    <p class="category">{text.business}</p>
-    <p class="tagline">{text.tagline}</p>
+  {#if strings}
+    <h1>{strings.title}</h1>
+    <p class="category">{strings.business}</p>
+    <h2 class="tagline">{strings.tagline}</h2>
     <div>
-      <a class="btn" href="#">{text.cta}</a>
+      <Btn isAccent isLarge>{strings.cta}</Btn>
     </div>
   {/if}
 </header>
@@ -48,7 +66,7 @@
       max-width: 24ch;
       margin-bottom: 3rem;
 
-      font-size: 3rem;
+      // font-size: 3rem;
       font-weight: 800;
     }
   }

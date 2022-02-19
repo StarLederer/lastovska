@@ -5,10 +5,36 @@ $color-a: rgb(32, 63, 197);
 
 $trans-s: 150ms;
 
+$breakpoint-s: 400px;
+$breakpoint-m: 800px;
+$breakpoint-l: 1200px;
+
 $max-width: 1000px;
 
 @mixin container {
   max-width: calc($max-width + 4rem);
   padding: 0 2rem;
   margin: 0 auto;
+}
+
+@mixin font-sizes($h2) {
+  h2 {
+    font-size: $h2;
+  }
+
+  h3 {
+    font-size: lerp(1rem, $h2, 0.4);
+  }
+
+  h4 {
+    font-size: lerp(1rem, $h2, 0.3);
+  }
+
+  h5 {
+    font-size: lerp(1rem, $h2, 0.2);
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
 }

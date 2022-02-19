@@ -18,6 +18,8 @@ body {
   color: $color-fg;
 }
 
+// Margins
+
 h1,
 h2,
 .btn,
@@ -27,47 +29,18 @@ p {
   }
 }
 
-.btn {
-  padding: 1rem 2rem;
-  position: relative;
+.container {
+  @include container;
+}
 
-  background: $color-a;
-  color: $color-fg;
-  font-size: 1rem;
-  line-height: 1rem;
-  font-weight: 800;
-  border-radius: 1.5rem;
-  text-decoration: none;
+// Typography
 
-  display: inline-block;
+@include font-sizes(2rem);
 
-  &::before {
-    content: "";
+@media screen and (min-width: $breakpoint-m) {
+  @include font-sizes(3rem);
+}
 
-    width: calc(100% + 1rem);
-    height: calc(100% + 1rem);
-    position: absolute;
-    top: -0.5rem;
-    left: -0.5rem;
-
-    border-radius: 99999999px;
-
-    background: inherit;
-    opacity: 0;
-    transform: scale(1.2);
-
-    display: block;
-    transition: $trans-s;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  &:hover {
-    background: mix($color-a, $color-fg, 90%);
-
-    &::before {
-      transform: scale(1);
-      opacity: 0.2;
-    }
-  }
+@media screen and (min-width: $breakpoint-l) {
+  @include font-sizes(4rem);
 }
