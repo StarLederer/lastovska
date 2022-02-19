@@ -3,7 +3,7 @@
 
   let text;
   onMount(async () => {
-    text = (await (await fetch('http://localhost:1337/api/header')).json()).data
+    text = (await (await fetch('https://lastovska-backend.herokuapp.com/api/header')).json()).data
       .attributes;
   });
 </script>
