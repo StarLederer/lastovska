@@ -4,6 +4,11 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "module": "commonjs",
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": "8.x.x",
+    "yarn": "1.x"
+  },
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -21,10 +26,6 @@
   },
   "strapi": {
     "uuid": "04b26147-11b3-477f-a733-89c6e8b6d225"
-  },
-  "engines": {
-    "node": ">=12.x.x <=16.x.x",
-    "npm": ">=6.0.0"
   },
   "license": "MIT",
   "devDependencies": {
