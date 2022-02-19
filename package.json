@@ -3,10 +3,19 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev:backend": "pnpm --prefix ./packages/backend run develop",
-    "dev:frontend": "pnpm --prefix ./packages/frontend run dev",
-    "dev": "concurrently -n f,b \"pnpm run dev:frontend\" \"pnpm run dev:backend\""
+    "dev:backend": "yarn --cwd ./packages/backend develop",
+    "dev:frontend": "yarn --cwd ./packages/frontend dev",
+    "dev": "concurrently -n f,b \"yarn dev:frontend\" \"yarn dev:backend\"",
+    "build:backend": "yarn --cwd ./packages/backend build",
+    "build:frontend": "yarn --cwd ./packages/frontend build",
+    "build": "yarn build:frontend & yarn build:backend",
+    "start:backend": "yarn --cwd ./packages/backend start",
+    "start:frontend": "yarn --cwd ./packages/frontend start",
+    "start": "yarn start:frontend & yarn start:backend"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.12.0",
