@@ -6,6 +6,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "yarn": "1.x"
+  },
   "scripts": {
     "dev:backend": "yarn --cwd ./packages/backend develop",
     "dev:frontend": "yarn --cwd ./packages/frontend dev",
