@@ -14,7 +14,7 @@
     "build:frontend": "yarn --cwd ./packages/frontend build",
     "build": "yarn build:frontend & yarn build:backend",
     "start:backend": "yarn --cwd ./packages/backend start",
-    "start:frontend": "yarn --cwd ./packages/frontend start",
+    "start:frontend": "yarn --cwd ./packages/frontend preview",
     "start": "yarn start:frontend & yarn start:backend"
   },
   "devDependencies": {
