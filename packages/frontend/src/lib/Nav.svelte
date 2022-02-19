@@ -40,8 +40,12 @@
     top: 0;
     left: 0;
 
+    background: mix($color-bg, transparent, 60%);
+
+    z-index: 1;
+
     .locale-switcher {
-      padding: 2rem 0;
+      padding: 1rem 0;
       margin: 0 -1rem;
 
       display: flex;
