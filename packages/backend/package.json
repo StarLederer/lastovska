@@ -18,7 +18,9 @@
     "@strapi/plugin-i18n": "4.1.0",
     "@strapi/plugin-users-permissions": "4.1.0",
     "@strapi/strapi": "4.1.0",
-    "mysql": "2.18.1"
+    "mysql": "2.18.1",
+    "pg": "^8.7.3",
+    "pg-connection-string": "^2.5.0"
   },
   "author": {
     "name": "A Strapi developer"
@@ -26,8 +28,5 @@
   "strapi": {
     "uuid": "04b26147-11b3-477f-a733-89c6e8b6d225"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0"
-  }
+  "license": "UNLICENSED"
 }
