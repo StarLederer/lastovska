@@ -3,6 +3,7 @@
   import backend from "./backend";
   import { i18n } from "./lib/stores";
   import Nav from "./lib/Nav.svelte"
+  import Gallery from "./lib/Gallery.svelte"
   import Btn from "./lib/buttons/Btn.svelte"
 
   let v_i18n;
@@ -37,16 +38,17 @@
   {/if}
 </header>
 
-<!-- <main>
-  <h2>Portfolio</h2>
-</main> -->
+<main>
+  <Gallery />
+</main>
 <style lang="scss">
   @import "./resources/scss/all.scss";
 
   header {
     @include container;
 
-    min-height: 100vh;
+    padding-top: 20rem;
+    padding-bottom: 20rem;
 
     display: flex;
     flex-direction: column;

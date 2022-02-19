@@ -1,4 +1,4 @@
 const url = 'https://lastovska-backend.herokuapp.com';
-// const url = 'https://127.0.0.1';
+// const url = 'http://localhost:1337';
 
 export default url;
