@@ -37,6 +37,10 @@ p {
 
 @include font-sizes(2rem);
 
+@media screen and (min-width: $breakpoint-s) {
+  @include font-sizes(2.5rem);
+}
+
 @media screen and (min-width: $breakpoint-m) {
   @include font-sizes(3rem);
 }

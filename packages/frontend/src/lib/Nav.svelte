@@ -42,6 +42,7 @@
 
     .locale-switcher {
       padding: 2rem 0;
+      margin: 0 -1rem;
 
       display: flex;
       list-style-type: none;
