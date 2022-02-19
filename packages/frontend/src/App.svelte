@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   import backend from "./backend";
   import { i18n } from "./lib/stores";
-  import Nav from "./lib/Nav.svelte"
-  import Gallery from "./lib/Gallery.svelte"
-  import Btn from "./lib/buttons/Btn.svelte"
+  import Nav from "./lib/Nav.svelte";
+  import Gallery from "./lib/Gallery.svelte";
+  import Btn from "./lib/buttons/Btn.svelte";
 
   let v_i18n;
 
@@ -16,10 +16,12 @@
   let strings;
   async function loadStrings() {
     try {
-      strings = (await (await fetch(`${backend}/api/header?locale=${v_i18n.current}`)).json()).data
-      .attributes;
-    }
-    catch (e) {}
+      strings = (
+        await (
+          await fetch(`${backend}/api/header?locale=${v_i18n.current}`)
+        ).json()
+      ).data.attributes;
+    } catch (e) {}
   }
 
   onMount(loadStrings);
@@ -41,14 +43,15 @@
 <main>
   <Gallery />
 </main>
+
 <style lang="scss">
   @import "./resources/scss/all.scss";
 
   header {
     @include container;
 
-    padding-top: 20rem;
-    padding-bottom: 20rem;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
 
     display: flex;
     flex-direction: column;
@@ -70,6 +73,17 @@
 
       // font-size: 3rem;
       font-weight: 800;
+    }
+  }
+
+  main {
+    padding-bottom: 2rem;
+  }
+
+  @media screen and (min-height: $breakpoint-l) {
+    header {
+      padding-top: 20rem;
+      padding-bottom: 20rem;
     }
   }
 </style>
