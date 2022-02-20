@@ -1,25 +1,27 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
 
   export let isAccent = false;
-  export let isLarge= false;
+  export let isLarge = false;
+  export let isGhost = false;
 </script>
 
 <button
   class="btn"
   class:is-accent={isAccent}
   class:is-large={isLarge}
+  class:is-ghost={isGhost}
   on:click={() => {
-    dispatch("click");
+    dispatch('click');
   }}
 >
-  <!-- <div> -->
+  <div class="wrapper">
     <slot />
-  <!-- </div> -->
+  </div>
 </button>
 
 <style lang="scss">
-  @import "./style.scss";
+  @import "./btn.scss";
 </style>

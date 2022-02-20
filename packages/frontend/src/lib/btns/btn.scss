@@ -13,10 +13,15 @@
   text-decoration: none;
   border: none;
 
-  display: inline-block;
+  display: block;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: $trans-s;
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+  }
 
   &::before {
     content: "";
@@ -28,7 +33,6 @@
     left: 0;
 
     border-radius: 999999px;
-
     background: transparent;
     opacity: 0;
     transform: scale(1.2);
@@ -43,6 +47,26 @@
       background: mix($color-fg, transparent, 10%);
       transform: scale(1);
       opacity: 1;
+    }
+  }
+
+  &.is-ghost {
+    $color-a-bright: mix($color-a, $color-fg, 60%);
+
+    background: mix($color-a-bright, transparent, 10%);
+    color: $color-a-bright;
+
+    &::before {
+      content: "";
+    }
+
+    &:hover {
+      background: transparent;
+      color: $color-fg;
+
+      &::before {
+        background: mix($color-fg, $color-a, 10%);
+      }
     }
   }
 

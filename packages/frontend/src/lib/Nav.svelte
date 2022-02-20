@@ -1,6 +1,6 @@
 <script lang="ts">
   import { i18n } from './stores';
-  import Btn from './buttons/Btn.svelte';
+  import Btn from './btns/Btn.svelte';
 
   let vI18n;
 
@@ -37,11 +37,11 @@
 
   nav {
     width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
 
-    background: mix($color-bg, transparent, 60%);
+    background: mix($color-fg, transparent, 5%);
 
     z-index: 1;
 

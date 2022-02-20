@@ -1,7 +1,7 @@
 <script lang="ts">
   import Masonry from 'svelte-bricks';
   import { onMount } from 'svelte';
-  import backend from '../backend';
+  import backend from '../../backend';
   // import { i18n } from './stores';
 
   let projects = [];
@@ -15,6 +15,7 @@
 
 <section>
   <div class="container">
+    <h2>Gallery</h2>
     <Masonry items={projects} let:item gap={4}>
       <article>
         <img
@@ -27,7 +28,7 @@
 </section>
 
 <style lang="scss">
-  @import "../resources/scss/all.scss";
+  @import "../../resources/scss/all.scss";
 
   article {
     img {
