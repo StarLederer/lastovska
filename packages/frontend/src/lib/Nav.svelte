@@ -1,34 +1,35 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { i18n } from "./stores";
-  import Btn from "./buttons/Btn.svelte"
+  import { i18n } from './stores';
+  import Btn from './buttons/Btn.svelte';
 
-  let v_i18n;
+  let vI18n;
 
   i18n.subscribe((value) => {
-    v_i18n = value;
+    vI18n = value;
   });
 </script>
 
 <nav>
-<div class="container">
-  {#if i18n}
-  <ul class="locale-switcher">
-    {#each v_i18n.locales as locale}
-      <li>
-        <Btn on:click={() => {
-          i18n.update(o => {
-            o.current = locale;
-            return o
-          })
-        }}>
-          <span class:is-selected={v_i18n.current === locale}>{locale}</span>
-        </Btn>
-      </li>
-    {/each}
-  </ul>
-{/if}
-</div>
+  <div class="container">
+    {#if i18n}
+      <ul class="locale-switcher">
+        {#each vI18n.locales as locale}
+          <li>
+            <Btn
+              on:click={() => {
+                i18n.update((o) => ({
+                  ...o,
+                  current: locale,
+                }));
+              }}
+            >
+              <span class:is-selected={vI18n.current === locale}>{locale}</span>
+            </Btn>
+          </li>
+        {/each}
+      </ul>
+    {/if}
+  </div>
 </nav>
 
 <style lang="scss">

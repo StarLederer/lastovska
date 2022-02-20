@@ -1,23 +1,24 @@
-import App from './App.svelte'
-import backend from "./backend";
+import App from './App.svelte';
+import backend from './backend';
 import { i18n } from './lib/stores';
-import type { I18n } from "./lib/stores";
 
-const app = new App({
-  target: document.body
-});
+let app;
 
 (async () => {
-  const locales = (await (await fetch(`${backend}/api/i18n/locales`)).json())
+  const locales = (await (await fetch(`${backend}/api/i18n/locales`)).json());
 
-  locales.forEach(l => {
+  locales.forEach((l) => {
     i18n.update((o) => {
-      o.locales.push(l.code)
+      o.locales.push(l.code);
       if (l.isDefault) o.current = l.code;
 
       return o;
     });
-  })
+  });
+
+  app = new App({
+    target: document.body,
+  });
 })();
 
-export default app
+export default app;

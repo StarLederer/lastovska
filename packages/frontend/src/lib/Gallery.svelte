@@ -1,8 +1,8 @@
 <script lang="ts">
-  import backend from "../backend";
-  import { i18n } from "./stores";
-  import Masonry from "svelte-bricks";
-  import { onMount } from "svelte";
+  import Masonry from 'svelte-bricks';
+  import { onMount } from 'svelte';
+  import backend from '../backend';
+  // import { i18n } from './stores';
 
   let projects = [];
 
@@ -10,7 +10,6 @@
     projects = (
       await (await fetch(`${backend}/api/projects?populate=picture`)).json()
     ).data;
-    console.log(projects);
   });
 </script>
 
@@ -19,7 +18,7 @@
     <Masonry items={projects} let:item gap={4}>
       <article>
         <img
-          src={`${backend}${item.attributes.picture.data.attributes.formats.medium.url}`}
+          src={item.attributes.picture.data.attributes.formats.medium.url}
           alt={item.attributes.picture.data.attributes.alternativeText}
         />
       </article>

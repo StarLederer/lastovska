@@ -1,28 +1,30 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import backend from "./backend";
-  import { i18n } from "./lib/stores";
-  import Nav from "./lib/Nav.svelte";
-  import Gallery from "./lib/Gallery.svelte";
-  import Btn from "./lib/buttons/Btn.svelte";
+  import { onMount } from 'svelte';
+  import backend from './backend';
+  import { i18n } from './lib/stores';
+  import Nav from './lib/Nav.svelte';
+  import Gallery from './lib/Gallery.svelte';
+  import Btn from './lib/buttons/Btn.svelte';
 
-  let v_i18n;
-
-  i18n.subscribe((value) => {
-    v_i18n = value;
-    loadStrings();
-  });
+  let vI18n;
 
   let strings;
   async function loadStrings() {
     try {
       strings = (
         await (
-          await fetch(`${backend}/api/header?locale=${v_i18n.current}`)
+          await fetch(`${backend}/api/header?locale=${vI18n.current}`)
         ).json()
       ).data.attributes;
-    } catch (e) {}
+    } catch (e) {
+      // ...
+    }
   }
+
+  i18n.subscribe((value) => {
+    vI18n = value;
+    loadStrings();
+  });
 
   onMount(loadStrings);
 </script>
