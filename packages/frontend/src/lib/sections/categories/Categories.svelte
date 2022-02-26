@@ -1,8 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import backend from '../../backend';
-  import { i18n } from '../stores';
-  import Btn from '../btns/Btn.svelte';
+  import AccountGroup from 'svelte-material-icons/AccountGroup.svelte';
+  import Creation from 'svelte-material-icons/Creation.svelte';
+  import ImageFrame from 'svelte-material-icons/ImageFrame.svelte';
+  import backend from '../../../backend';
+  import { i18n } from '../../stores';
+  import Category from './Category.svelte';
 
   let vI18n;
 
@@ -29,16 +32,19 @@
   // TMP
   const cards = [
     {
+      icon: ImageFrame,
       title: 'Portrait',
       description:
-        'Describe what kind of service this is and when should the customer buy it.',
+        'I will capture portrait photograps suitable for profile pictures, professional portfolios, documents and marketing materials. Various backgrounds and visual styles are possible.',
     },
     {
+      icon: AccountGroup,
       title: 'Events',
       description:
         'I capture best moments of the event to be preserved in history. Weddings, concerts and corporate events are all exelent examples. You receive pictures optimized and perfected for marketing or personal use.',
     },
     {
+      icon: Creation,
       title: 'Creative',
       description:
         'Bring your idea and collaborate with me to create an outstanding visaul story. Costumes, extraordinary make-up and unique locations all around the world are ideal.',
@@ -49,15 +55,8 @@
 <section class="categories container">
   <h2>My services</h2>
   <div class="card-container">
-    {#each cards as card}
-      <section class="card">
-        <h3>{card.title}</h3>
-        <p>{card.description}</p>
-        <!-- <div style="height: 400px; background: black"></div> -->
-        <!-- <div class="btns">
-          <Btn isGhost>Make an appointment</Btn>
-        </div> -->
-      </section>
+    {#each cards as data}
+      <Category {data} />
     {/each}
   </div>
 
@@ -68,37 +67,23 @@
 </section>
 
 <style lang="scss">
-  @import "../../resources/scss/all.scss";
+  @import "../../../resources/scss/all.scss";
 
   .card-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+
+    @media screen and (min-width: $breakpoint-m) {
+      flex-direction: row;
+    }
   }
 
   // .cta {
   //   margin-top: 2rem;
-  //   display: flex;
+  //   // display: flex;
   //   flex-direction: column;
   //   justify-content: center;
-  //   align-items: center;
+  //   // align-items: center;
   // }
-
-  h3 {
-      margin-bottom: 1rem;
-    }
-
-  .card {
-    // padding: 2rem;
-
-    // background: mix($color-fg, transparent, 5%);
-    // border-radius: 1rem;
-
-    flex: 1;
-
-    p {
-      opacity: 0.6;
-      max-width: 48ch;
-    }
-  }
 </style>

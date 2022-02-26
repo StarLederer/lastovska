@@ -2,7 +2,7 @@
   import Nav from './lib/Nav.svelte';
   import Header from './lib/sections/Header.svelte';
   import Gallery from './lib/sections/Gallery.svelte';
-  import Categories from './lib/sections/Categories.svelte';
+  import Categories from './lib/sections/categories/Categories.svelte';
   import Contact from './lib/sections/Contact.svelte';
   import Popup from './lib/sections/Popup.svelte';
 </script>

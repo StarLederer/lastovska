@@ -29,7 +29,7 @@ p {
 }
 
 h2 {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .container {
@@ -65,6 +65,14 @@ h3 {
 }
 
 // Btns
+button {
+  background: unset;
+  border: unset;
+  text-align: unset;
+  font-size: unset;
+  cursor: pointer;
+}
+
 .btns {
   display: flex;
   flex-wrap: wrap;

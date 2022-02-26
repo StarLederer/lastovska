@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Email from 'svelte-material-icons/Email.svelte';
+  import Phone from 'svelte-material-icons/Phone.svelte';
   import backend from '../../backend';
   import { i18n } from '../stores';
-  import Btn from '../btns/Btn.svelte';
 
   let vI18n;
 
@@ -29,11 +30,30 @@
 
 <section class="contact container">
   <h2>Contact details</h2>
-  <p>phone: +371 00000000</p>
-  <p>email: work.lastovska (@) gmail.com</p>
+  <div class="fields">
+    <div class="field">
+      <div class="icon"><Phone size="1rem"/></div>
+      <p>+371 00000000</p>
+    </div>
+
+    <div class="field">
+      <div class="icon"><Email size="1rem"/></div>
+      <p>work.lastovska (@) gmail.com</p>
+    </div>
+  </div>
 </section>
 
 <style lang="scss">
   @import "../../resources/scss/all.scss";
 
+  .fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .field {
+    display: flex;
+    gap: 1rem
+  }
 </style>

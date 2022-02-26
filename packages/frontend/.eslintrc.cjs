@@ -6,7 +6,7 @@ module.exports = {
   plugins: ['svelte3'],
 
   settings: {
-    'import/core-modules': ['svelte', 'svelte-bricks'],
+    'import/core-modules': ['svelte', 'svelte-bricks', 'svelte-material-icons'],
     'svelte3/typescript': true,
     'import/resolver': {
       node: {
