@@ -1,9 +1,11 @@
 <script lang="ts">
-  import Masonry from 'svelte-bricks';
   import { onMount } from 'svelte';
-  import backend from '../../backend';
+  import Masonry from 'svelte-bricks';
+  import backend from '../../../backend';
+  import Viewer from './Viewer.svelte';
   // import { i18n } from './stores';
 
+  let viewer;
   let projects = [];
 
   onMount(async () => {
@@ -17,20 +19,26 @@
   <div class="container">
     <h2>Gallery</h2>
     <Masonry items={projects} let:item gap={4}>
-      <article>
+      <button
+        on:click={() => {
+          viewer.loadProject(item.id);
+        }}
+      >
         <img
           src={item.attributes.picture.data.attributes.formats.medium.url}
           alt={item.attributes.picture.data.attributes.alternativeText}
         />
-      </article>
+      </button>
     </Masonry>
   </div>
 </section>
 
-<style lang="scss">
-  @import "../../resources/scss/all.scss";
+<Viewer bind:this={viewer} />
 
-  article {
+<style lang="scss">
+  @import "../../../resources/scss/all.scss";
+
+  button {
     img {
       width: 100%;
       display: block;

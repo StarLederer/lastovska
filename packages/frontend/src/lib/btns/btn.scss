@@ -47,6 +47,9 @@
   .wrapper {
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   @include hover-before(0.5rem, 0rem);
