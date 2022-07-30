@@ -14,7 +14,6 @@
     "@tsconfig/svelte": "^2.0.1",
     "@webwriter/vite-plugin-compiler": "link:../../../../Webwriter/vite-plugin-compiler",
     "@webwriter/vite-plugin-svelte": "link:../../../../Webwriter/vite-plugin-svelte",
-    "eslint-import-resolver-alias": "^1.1.2",
     "svelte": "^3.44.0",
     "svelte-bricks": "^0.1.4",
     "svelte-check": "^2.2.7",
