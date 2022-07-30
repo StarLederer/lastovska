@@ -29,7 +29,7 @@
 </section>
 
 <style lang="scss">
-  @import "../../resources/scss/all.scss";
+  @import "../resources/scss/all.scss";
 
   .fields {
     display: flex;
