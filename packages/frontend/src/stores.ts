@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import locales from './locales';
 
 export type I18n = {
   current: string;
@@ -6,6 +7,6 @@ export type I18n = {
 };
 
 export const i18n = writable<I18n>({
-  current: '',
-  locales: [],
+  current: locales[0],
+  locales,
 });

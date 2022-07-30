@@ -1,42 +1,31 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import backend from '../../backend';
-  import { i18n } from '../stores';
+  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
+  import { i18n } from '../../stores';
   import Btn from '../btns/Btn.svelte';
+  import Txt from '../Txt.svelte';
 
-  let vI18n;
-
-  let strings;
-  async function loadStrings() {
-    try {
-      strings = (
-        await (
-          await fetch(`${backend}/api/header?locale=${vI18n.current}`)
-        ).json()
-      ).data.attributes;
-    } catch (e) {
-      // ...
-    }
-  }
-
-  i18n.subscribe((value) => {
-    vI18n = value;
-    loadStrings();
+  const book = 'home';
+  let prodContent: any = {};
+  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
+    prodContent = data;
   });
-
-  onMount(loadStrings);
 </script>
 
-
 <header>
-  {#if strings}
-    <h1>{strings.title}</h1>
-    <p class="category">{strings.business}</p>
-    <h2 class="tagline">{strings.tagline}</h2>
-    <div>
-      <Btn isAccent isLarge on:click={() => { window.popup.show(); }}>{strings.cta}</Btn>
-    </div>
-  {/if}
+  <h1><Txt {book} chapter="name" {prodContent} /></h1>
+  <p class="category"><Txt {book} chapter="business" {prodContent} /></p>
+  <h2 class="tagline"><Txt {book} chapter="tagline" {prodContent} /></h2>
+  <div>
+    <Btn
+      isAccent
+      isLarge
+      on:click={() => {
+        window.popup.show();
+      }}
+    >
+      <Txt {book} chapter="cta" {prodContent} />
+    </Btn>
+  </div>
 </header>
 
 <style lang="scss">

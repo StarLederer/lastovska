@@ -1,44 +1,29 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import Email from 'svelte-material-icons/Email.svelte';
   import Phone from 'svelte-material-icons/Phone.svelte';
-  import backend from '../../backend';
-  import { i18n } from '../stores';
+  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
-  let vI18n;
+  import { i18n } from '../../stores';
+  import Txt from '../Txt.svelte';
 
-  let strings;
-  async function loadStrings() {
-    try {
-      strings = (
-        await (
-          await fetch(`${backend}/api/header?locale=${vI18n.current}`)
-        ).json()
-      ).data.attributes;
-    } catch (e) {
-      // ...
-    }
-  }
-
-  i18n.subscribe((value) => {
-    vI18n = value;
-    loadStrings();
+  const book = 'contact';
+  let prodContent: any = {};
+  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
+    prodContent = data;
   });
-
-  onMount(loadStrings);
 </script>
 
 <section class="contact container">
-  <h2>Contact details</h2>
+  <h2><Txt {book} chapter="section-title" {prodContent}/></h2>
   <div class="fields">
     <div class="field">
-      <div class="icon"><Phone size="1rem"/></div>
-      <p>+371 00000000</p>
+      <div class="icon"><Phone size="1rem" /></div>
+      <p><Txt {book} chapter="phone-number" {prodContent}/></p>
     </div>
 
     <div class="field">
-      <div class="icon"><Email size="1rem"/></div>
-      <p>work.lastovska (@) gmail.com</p>
+      <div class="icon"><Email size="1rem" /></div>
+      <p><Txt {book} chapter="email-address" {prodContent}/></p>
     </div>
   </div>
 </section>
@@ -54,6 +39,6 @@
 
   .field {
     display: flex;
-    gap: 1rem
+    gap: 1rem;
   }
 </style>

@@ -1,10 +1,20 @@
 <script lang="ts">
+  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
+  import Txt from '../../Txt.svelte';
   import Btn from '../../btns/Dummy.svelte';
+  import { i18n } from '../../../stores';
+
+  const book = 'categories';
+  let prodContent: any = {};
+  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
+    prodContent = data;
+  });
 
   let isFocus;
   let isHover;
 
-  export let data;
+  export let name: string;
+  export let icon;
 </script>
 
 <button
@@ -28,13 +38,17 @@
 >
   <div class="info">
     <div class="icon">
-      <svelte:component this={data.icon} size="2rem" />
+      <svelte:component this={icon} size="2rem" />
     </div>
-    <h3>{data.title}</h3>
-    <p>{data.description}</p>
+    <h3><Txt {book} chapter={`${name}-title`} {prodContent} /></h3>
+    <p><Txt {book} chapter={`${name}-description`} {prodContent} /></p>
   </div>
   <div class="ctas btns">
-    <div class="popper"><Btn isGhost isFocused={isHover || isFocus}>Order</Btn></div>
+    <div class="popper">
+      <Btn isGhost isFocused={isHover || isFocus}>
+        <Txt {book} chapter={'button'} {prodContent} />
+      </Btn>
+    </div>
   </div>
 </button>
 

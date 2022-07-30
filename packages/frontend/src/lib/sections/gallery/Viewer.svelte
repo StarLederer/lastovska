@@ -1,6 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Close from 'svelte-material-icons/KeyboardBackspace.svelte';
+  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
+
+  import { i18n } from '../../../stores';
+  import Txt from '../../Txt.svelte';
   import backend from '../../../backend';
   import Btn from '../../btns/Btn.svelte';
 
@@ -17,10 +21,13 @@
         await fetch(`${backend}/api/projects/${projectId}?populate=picture`)
       ).json()
     ).data;
-
-    console.log(project);
-    console.log(project.attributes.picture);
   }
+
+  const book = 'viewer';
+  let prodContent: any = {};
+  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
+    prodContent = data;
+  });
 
   export { loadProject };
 </script>
@@ -29,8 +36,13 @@
   <div class="controls">
     <div class="container">
       <div class="btns">
-        <Btn on:click={() => { isOpen = false; }}>
-          <Close size="1.5rem" /> back
+        <Btn
+          on:click={() => {
+            isOpen = false;
+          }}
+        >
+          <Close size="1.5rem" />
+          <Txt {book} chapter="back-btn" {prodContent}></Txt>
         </Btn>
       </div>
     </div>

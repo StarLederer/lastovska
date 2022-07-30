@@ -1,62 +1,40 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import AccountGroup from 'svelte-material-icons/AccountGroup.svelte';
   import Creation from 'svelte-material-icons/Creation.svelte';
   import ImageFrame from 'svelte-material-icons/ImageFrame.svelte';
-  import backend from '../../../backend';
-  import { i18n } from '../../stores';
+  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
+
   import Category from './Category.svelte';
+  import { i18n } from '../../../stores';
+  import Txt from '../../Txt.svelte';
 
-  let vI18n;
-
-  let strings;
-  async function loadStrings() {
-    try {
-      strings = (
-        await (
-          await fetch(`${backend}/api/header?locale=${vI18n.current}`)
-        ).json()
-      ).data.attributes;
-    } catch (e) {
-      // ...
-    }
-  }
-
-  i18n.subscribe((value) => {
-    vI18n = value;
-    loadStrings();
+  const book = 'categories';
+  let prodContent: any = {};
+  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
+    prodContent = data;
   });
 
-  onMount(loadStrings);
-
-  // TMP
   const cards = [
     {
       icon: ImageFrame,
-      title: 'Portrait',
-      description:
-        'I will capture portrait photograps suitable for profile pictures, professional portfolios, documents and marketing materials. Various backgrounds and visual styles are possible.',
+      name: 'portrait',
     },
     {
       icon: AccountGroup,
-      title: 'Events',
-      description:
-        'I capture best moments of the event to be preserved in history. Weddings, concerts and corporate events are all exelent examples. You receive pictures optimized and perfected for marketing or personal use.',
+      name: 'events',
     },
     {
       icon: Creation,
-      title: 'Creative',
-      description:
-        'Bring your idea and collaborate with me to create an outstanding visaul story. Costumes, extraordinary make-up and unique locations all around the world are ideal.',
+      name: 'creative',
     },
   ];
 </script>
 
 <section class="categories container">
-  <h2>My services</h2>
+  <h2><Txt {book} chapter="section-title" {prodContent}/></h2>
   <div class="card-container">
-    {#each cards as data}
-      <Category {data} />
+    {#each cards as card}
+      <Category name={card.name} icon={card.icon} />
     {/each}
   </div>
 

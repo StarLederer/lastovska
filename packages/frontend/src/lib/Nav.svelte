@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { i18n } from './stores';
+  import { i18n } from '../stores';
   import Btn from './btns/Btn.svelte';
 
   let vI18n;

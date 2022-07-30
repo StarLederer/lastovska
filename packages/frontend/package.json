@@ -10,8 +10,10 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.37",
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.37",
     "@tsconfig/svelte": "^2.0.1",
+    "@webwriter/vite-plugin-compiler": "link:../../../../Webwriter/vite-plugin-compiler",
+    "@webwriter/vite-plugin-svelte": "link:../../../../Webwriter/vite-plugin-svelte",
     "eslint-plugin-svelte3": "^3.4.0",
     "svelte": "^3.44.0",
     "svelte-bricks": "^0.1.4",
@@ -20,7 +22,8 @@
     "svelte-preprocess": "^4.9.8",
     "tslib": "^2.3.1",
     "typescript": "^4.5.4",
-    "vite": "^2.8.0"
+    "vite": "^2.9.14",
+    "vite-plugin-fs": "^1.0.0-beta.3"
   },
   "dependencies": {
     "sass": "^1.49.8"
