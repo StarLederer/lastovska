@@ -1,12 +1,11 @@
-module.exports = {
-  plugins: ['svelte3'],
+const { resolve } = require('path');
 
+module.exports = {
   settings: {
-    'svelte3/typescript': true,
     'import/resolver': {
-      node: {
-        extensions: ['.ts'],
-      },
+      alias: [
+        ['~', 'src'],
+      ],
     },
   },
 
@@ -14,8 +13,14 @@ module.exports = {
     // Svelte files
     {
       files: ['*.svelte'],
-      processor: 'svelte3/svelte3',
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        project: resolve(__dirname, 'tsconfig.json'),
+        extraFileExtensions: ['.svelte'],
+      },
       rules: {
+        'import/no-unresolved': 'off',
         'import/first': 'off',
         'import/no-duplicates': 'off',
         'import/no-mutable-exports': 'off',
@@ -29,7 +34,7 @@ module.exports = {
     {
       files: ['*.ts'],
       parserOptions: {
-        project: './tsconfig.json',
+        project: resolve(__dirname, 'tsconfig.json'),
       },
     },
   ],

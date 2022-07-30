@@ -3,9 +3,10 @@
   import Masonry from 'svelte-bricks';
   import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
-  import { i18n } from '../../../stores';
-  import backend from '../../../backend';
-  import Txt from '../../Txt.svelte';
+  import { i18n } from '~/stores';
+  import backend from '~/backend';
+  import Txt from '~/lib/Txt.svelte';
+
   import Viewer from './Viewer.svelte';
 
   let viewer;

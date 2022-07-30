@@ -3,17 +3,17 @@
   import Close from 'svelte-material-icons/KeyboardBackspace.svelte';
   import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
-  import { i18n } from '../../../stores';
-  import Txt from '../../Txt.svelte';
-  import backend from '../../../backend';
-  import Btn from '../../btns/Btn.svelte';
+  import { i18n } from '~/stores';
+  import backend from '~/backend';
+  import Txt from '~/lib/Txt.svelte';
+  import Btn from '~/lib/btns/Btn.svelte';
 
   let project;
   let isOpen = false;
 
   onMount(async () => {});
 
-  async function loadProject(projectId: string) {
+  const loadProject = async (projectId: string) => {
     isOpen = true;
 
     project = (
@@ -21,7 +21,7 @@
         await fetch(`${backend}/api/projects/${projectId}?populate=picture`)
       ).json()
     ).data;
-  }
+  };
 
   const book = 'viewer';
   let prodContent: any = {};

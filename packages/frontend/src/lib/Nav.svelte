@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { i18n } from '../stores';
-  import Btn from './btns/Btn.svelte';
+  import { i18n } from '~/stores';
+  import Btn from '~/lib/btns/Btn.svelte';
 
   let vI18n;
 

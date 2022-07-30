@@ -3,8 +3,8 @@
   import Phone from 'svelte-material-icons/Phone.svelte';
   import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
-  import { i18n } from '../../stores';
-  import Txt from '../Txt.svelte';
+  import Txt from '~/lib/Txt.svelte';
+  import { i18n } from '~/stores';
 
   const book = 'contact';
   let prodContent: any = {};
@@ -14,16 +14,16 @@
 </script>
 
 <section class="contact container">
-  <h2><Txt {book} chapter="section-title" {prodContent}/></h2>
+  <h2><Txt {book} chapter="section-title" {prodContent} /></h2>
   <div class="fields">
     <div class="field">
       <div class="icon"><Phone size="1rem" /></div>
-      <p><Txt {book} chapter="phone-number" {prodContent}/></p>
+      <p><Txt {book} chapter="phone-number" {prodContent} /></p>
     </div>
 
     <div class="field">
       <div class="icon"><Email size="1rem" /></div>
-      <p><Txt {book} chapter="email-address" {prodContent}/></p>
+      <p><Txt {book} chapter="email-address" {prodContent} /></p>
     </div>
   </div>
 </section>

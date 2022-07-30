@@ -4,9 +4,10 @@
   import ImageFrame from 'svelte-material-icons/ImageFrame.svelte';
   import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
+  import Txt from '~/lib/Txt.svelte';
+  import { i18n } from '~/stores';
+
   import Category from './Category.svelte';
-  import { i18n } from '../../../stores';
-  import Txt from '../../Txt.svelte';
 
   const book = 'categories';
   let prodContent: any = {};

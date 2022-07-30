@@ -1,14 +1,14 @@
 <script lang="ts">
-  import Btn from '../btns/Btn.svelte';
+  import Btn from '~/lib/btns/Btn.svelte';
   import Contact from './Contact.svelte';
-
-  export let isVisible = false;
 
   window.popup = {
     show() {
       isVisible = true;
     },
   };
+
+  export let isVisible = false;
 </script>
 
 <aside class="popup" class:is-visible={isVisible}>

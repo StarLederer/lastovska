@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Webwriter } from '@webwriter/vite-plugin-svelte/components';
-  import { i18n } from '../stores';
+  import { i18n } from '~/stores';
 
   let locale;
 

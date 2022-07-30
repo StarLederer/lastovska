@@ -8,6 +8,11 @@ import compiler, { recursiveDirToBooks } from '@webwriter/vite-plugin-compiler';
 
 export default defineConfig({
   base: './',
+  resolve: {
+    alias: {
+      '~': resolve(__dirname, './src'),
+    },
+  },
   plugins: [
     svelte(),
     viteFs({
@@ -28,5 +33,5 @@ export default defineConfig({
         path: resolve('webwriter.config.prod.js'),
       },
     }),
-  ]
+  ],
 });

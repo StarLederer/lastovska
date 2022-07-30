@@ -1,8 +1,9 @@
 <script lang="ts">
   import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
-  import { i18n } from '../../stores';
-  import Btn from '../btns/Btn.svelte';
-  import Txt from '../Txt.svelte';
+
+  import { i18n } from '~/stores';
+  import Txt from '~/lib/Txt.svelte';
+  import Btn from '~/lib/btns/Btn.svelte';
 
   const book = 'home';
   let prodContent: any = {};
