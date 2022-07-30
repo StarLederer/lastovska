@@ -1,12 +1,7 @@
-const baseConfig = require('../../.eslintrc.cjs');
-
 module.exports = {
-  ...baseConfig,
-
   plugins: ['svelte3'],
 
   settings: {
-    'import/core-modules': ['svelte', 'svelte-bricks', 'svelte-material-icons'],
     'svelte3/typescript': true,
     'import/resolver': {
       node: {
@@ -20,6 +15,14 @@ module.exports = {
     {
       files: ['*.svelte'],
       processor: 'svelte3/svelte3',
+      rules: {
+        'import/first': 'off',
+        'import/no-duplicates': 'off',
+        'import/no-mutable-exports': 'off',
+        'import/prefer-default-export': 'off',
+        'import/extensions': 'off',
+        'no-use-before-define': 'off',
+      },
     },
 
     // Typescript files
@@ -32,8 +35,6 @@ module.exports = {
   ],
 
   rules: {
-    ...baseConfig.rules,
-    'import/no-mutable-exports': 'off',
-    'import/extensions': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
