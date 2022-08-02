@@ -1,9 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Masonry from 'svelte-bricks';
-  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
-  import { i18n } from '~/stores';
   import backend from '~/backend';
   import Txt from '~/lib/Txt.svelte';
 
@@ -11,12 +9,6 @@
 
   let viewer;
   let projects = [];
-
-  const book = 'gallery';
-  let prodContent: any = {};
-  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
-    prodContent = data;
-  });
 
   onMount(async () => {
     projects = (
@@ -27,7 +19,7 @@
 
 <section>
   <div class="container">
-    <h2><Txt {book} chapter={'section-title'} {prodContent} /></h2>
+    <h2><Txt chapter={'gallery-title'} /></h2>
     <Masonry items={projects} let:item gap={4}>
       <button
         on:click={() => {
@@ -46,7 +38,7 @@
 <Viewer bind:this={viewer} />
 
 <style lang="scss">
-  @import "../../../resources/scss/all.scss";
+  @import "../../resources/scss/all.scss";
 
   button {
     img {

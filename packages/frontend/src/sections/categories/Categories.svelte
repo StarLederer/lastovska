@@ -2,18 +2,10 @@
   import AccountGroup from 'svelte-material-icons/AccountGroup.svelte';
   import Creation from 'svelte-material-icons/Creation.svelte';
   import ImageFrame from 'svelte-material-icons/ImageFrame.svelte';
-  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
   import Txt from '~/lib/Txt.svelte';
-  import { i18n } from '~/stores';
 
   import Category from './Category.svelte';
-
-  const book = 'categories';
-  let prodContent: any = {};
-  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
-    prodContent = data;
-  });
 
   const cards = [
     {
@@ -32,7 +24,7 @@
 </script>
 
 <section class="categories container">
-  <h2><Txt {book} chapter="section-title" {prodContent}/></h2>
+  <h2><Txt chapter="categories-title"/></h2>
   <div class="card-container">
     {#each cards as card}
       <Category name={card.name} icon={card.icon} />
@@ -46,7 +38,7 @@
 </section>
 
 <style lang="scss">
-  @import "../../../resources/scss/all.scss";
+  @import "../../resources/scss/all.scss";
 
   .card-container {
     display: flex;

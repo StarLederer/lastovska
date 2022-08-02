@@ -1,21 +1,13 @@
 <script lang="ts">
-  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
-
-  import { i18n } from '~/stores';
   import Txt from '~/lib/Txt.svelte';
   import Btn from '~/lib/btns/Btn.svelte';
 
-  const book = 'home';
-  let prodContent: any = {};
-  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
-    prodContent = data;
-  });
 </script>
 
 <header>
-  <h1><Txt {book} chapter="name" {prodContent} /></h1>
-  <p class="category"><Txt {book} chapter="business" {prodContent} /></p>
-  <h2 class="tagline"><Txt {book} chapter="tagline" {prodContent} /></h2>
+  <h1><Txt chapter="business-name" /></h1>
+  <p class="category"><Txt chapter="business-category" /></p>
+  <h2 class="tagline"><Txt chapter="business-tagline" /></h2>
   <div>
     <Btn
       isAccent
@@ -24,13 +16,13 @@
         window.popup.show();
       }}
     >
-      <Txt {book} chapter="cta" {prodContent} />
+      <Txt chapter="cta" />
     </Btn>
   </div>
 </header>
 
 <style lang="scss">
-  @import "../../resources/scss/all.scss";
+  @import "../resources/scss/all.scss";
 
   header {
     @include container;

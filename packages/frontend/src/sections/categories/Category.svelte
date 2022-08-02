@@ -1,15 +1,6 @@
 <script lang="ts">
-  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
-
-  import { i18n } from '~/stores';
   import Txt from '~/lib/Txt.svelte';
   import Btn from '~/lib/btns/Dummy.svelte';
-
-  const book = 'categories';
-  let prodContent: any = {};
-  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
-    prodContent = data;
-  });
 
   let isFocus;
   let isHover;
@@ -41,20 +32,20 @@
     <div class="icon">
       <svelte:component this={icon} size="2rem" />
     </div>
-    <h3><Txt {book} chapter={`${name}-title`} {prodContent} /></h3>
-    <p><Txt {book} chapter={`${name}-description`} {prodContent} /></p>
+    <h3><Txt chapter={`category-${name}-title`} /></h3>
+    <p><Txt chapter={`category-${name}-description`} /></p>
   </div>
   <div class="ctas btns">
     <div class="popper">
       <Btn isGhost isFocused={isHover || isFocus}>
-        <Txt {book} chapter={'button'} {prodContent} />
+        <Txt chapter={'category-button'} />
       </Btn>
     </div>
   </div>
 </button>
 
 <style lang="scss">
-  @import "../../../resources/scss/all.scss";
+  @import "../../resources/scss/all.scss";
 
   @keyframes pop {
     0% {

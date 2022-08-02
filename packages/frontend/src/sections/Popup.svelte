@@ -21,7 +21,7 @@
 </aside>
 
 <style lang="scss">
-  @import "../../resources/scss/all.scss";
+  @import "../resources/scss/all.scss";
 
   .popup {
     width: 100vw;

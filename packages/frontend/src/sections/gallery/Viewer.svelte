@@ -1,9 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Close from 'svelte-material-icons/KeyboardBackspace.svelte';
-  import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
 
-  import { i18n } from '~/stores';
   import backend from '~/backend';
   import Txt from '~/lib/Txt.svelte';
   import Btn from '~/lib/btns/Btn.svelte';
@@ -23,12 +21,6 @@
     ).data;
   };
 
-  const book = 'viewer';
-  let prodContent: any = {};
-  $: loadHtml(`${$i18n.current}/${book}/index.json`).then((data) => {
-    prodContent = data;
-  });
-
   export { loadProject };
 </script>
 
@@ -42,7 +34,7 @@
           }}
         >
           <Close size="1.5rem" />
-          <Txt {book} chapter="back-btn" {prodContent}></Txt>
+          <Txt chapter="back-btn"></Txt>
         </Btn>
       </div>
     </div>
@@ -55,7 +47,7 @@
 </section>
 
 <style lang="scss">
-  @import "../../../resources/scss/all.scss";
+  @import "../../resources/scss/all.scss";
 
   .viewer {
     width: 100vw;

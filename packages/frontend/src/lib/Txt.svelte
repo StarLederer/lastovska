@@ -1,18 +1,27 @@
 <script lang="ts">
   import { Webwriter } from '@webwriter/vite-plugin-svelte/components';
-  import { i18n } from '~/stores';
+  import { getProdContentStore, i18n } from '~/stores';
 
-  let locale;
+  let prodContent;
 
-  i18n.subscribe((value) => {
-    locale = value.current;
-  });
+  $: (async () => {
+    const store = await getProdContentStore(`${$i18n.current}/index.json`);
 
-  export let book: string;
+    store.subscribe((content) => {
+      prodContent = content;
+    });
+  })();
+
+  $: path = noI18n ? `common/${chapter}.txt` : `${$i18n.current}/${chapter}.txt`;
+
   export let chapter: string;
-  export let prodContent: any;
+  export let noI18n = false;
 </script>
 
-<Webwriter path={`${locale}/${book}/${chapter}.txt`}>
-  {@html prodContent[chapter]}
+<Webwriter {path}>
+  {#if prodContent && prodContent[chapter]}
+    {@html prodContent[chapter]}
+  {:else}
+    ...
+  {/if}
 </Webwriter>
