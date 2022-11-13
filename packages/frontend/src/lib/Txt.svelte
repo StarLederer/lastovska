@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Webwriter } from '@webwriter/vite-plugin-svelte/components';
+  import { Webwriter } from 'vite-plugin-content-editor-svelte/components';
   import { getProdContentStore, i18n } from '~/stores';
 
   let prodContent;

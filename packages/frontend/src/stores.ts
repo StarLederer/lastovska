@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { loadHtml } from '@webwriter/vite-plugin-svelte/lib/runtime';
+import { loadHtml } from 'vite-plugin-content-editor-svelte/lib/runtime';
 
 import locales from './locales';
 

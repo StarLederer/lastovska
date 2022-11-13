@@ -12,8 +12,6 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "1.0.0-next.37",
     "@tsconfig/svelte": "^2.0.1",
-    "@webwriter/vite-plugin-compiler": "link:../../../../Webwriter/vite-plugin-compiler",
-    "@webwriter/vite-plugin-svelte": "link:../../../../Webwriter/vite-plugin-svelte",
     "eslint-import-resolver-alias": "^1.1.2",
     "svelte": "^3.44.0",
     "svelte-bricks": "^0.1.4",
@@ -24,7 +22,9 @@
     "tslib": "^2.3.1",
     "typescript": "^4.5.4",
     "vite": "^2.9.14",
-    "vite-plugin-fs": "^1.0.0-beta.3"
+    "vite-plugin-fs": "^1.0.0-beta.3",
+    "vite-plugin-content": "^1.0.0-beta",
+    "vite-plugin-content-editor-svelte": "^1.0.0-beta"
   },
   "dependencies": {
     "sass": "^1.49.8"
